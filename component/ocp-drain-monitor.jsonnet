@@ -11,15 +11,14 @@ local params = inv.parameters.ocp_drain_monitor;
 
 local upstreamNamespace = 'ocp-drain-monitor-system';
 
-local removeUpstreamNamespace = {
-  patch: std.manifestJsonMinified({
-    '$patch': 'delete',
-    apiVersion: 'v1',
-    kind: 'Namespace',
-    metadata: {
-      name: upstreamNamespace,
-    },
-  }),
+local removeUpstreamNamespace = kube.Namespace(upstreamNamespace) {
+  metadata: {
+    name: upstreamNamespace,
+  } + params.namespaceMetadata,
+};
+
+local patch = function(p) {
+  patch: std.manifestJsonMinified(p),
 };
 
 com.Kustomization(
@@ -39,9 +38,7 @@ com.Kustomization(
   },
   params.kustomize_input {
     patches+: [
-      removeUpstreamNamespace,
-    ],
-    patchesStrategicMerge+: [
+      patch(removeUpstreamNamespace),
     ],
   },
 )

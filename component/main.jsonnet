@@ -32,8 +32,5 @@ local alerts = function(name, groupName, alerts)
   });
 
 {
-  '00_namespace': kube.Namespace(params.namespace) {
-    metadata+: com.makeMergeable(params.namespaceMetadata),
-  },
   '10_prometheusrule': alerts('ocp-drain-monitor', 'drain.alerts', params.alerts),
 }
