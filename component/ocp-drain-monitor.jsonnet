@@ -14,7 +14,7 @@ local upstreamNamespace = 'ocp-drain-monitor-system';
 local removeUpstreamNamespace = kube.Namespace(upstreamNamespace) {
   metadata: {
     name: upstreamNamespace,
-  } + params.namespaceMetadata,
+  } + com.makeMergeable(params.namespaceMetadata),
 };
 
 local patch = function(p) {
@@ -39,6 +39,13 @@ com.Kustomization(
   params.kustomize_input {
     patches+: [
       patch(removeUpstreamNamespace),
+    ],
+    labels+: [
+      {
+        pairs: {
+          'app.kubernetes.io/managed-by': 'commodore',
+        },
+      },
     ],
   },
 )

@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: rbac
     app.kubernetes.io/created-by: ocp-drain-monitor
     app.kubernetes.io/instance: manager-rolebinding
-    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/managed-by: commodore
     app.kubernetes.io/name: clusterrolebinding
     app.kubernetes.io/part-of: ocp-drain-monitor
   name: ocp-drain-monitor-manager-rolebinding
