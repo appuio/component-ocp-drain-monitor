@@ -12,7 +12,7 @@ parameters:
       ocp_drain_monitor_controller:
         registry: ghcr.io
         image: appuio/ocp-drain-monitor
-        tag: v0.1.1
+        tag: v0.1.2
       kube_rbac_proxy:
         registry: gcr.io
         image: kubebuilder/kube-rbac-proxy

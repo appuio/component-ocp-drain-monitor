@@ -14,6 +14,11 @@ metadata:
 spec:
   endpoints:
   - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    metricRelabelings:
+    - action: keep
+      regex: ocp_drain_monitor_.+
+      sourceLabels:
+      - __name__
     path: /metrics
     port: https
     scheme: https
