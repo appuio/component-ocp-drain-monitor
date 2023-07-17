@@ -1,5 +1,7 @@
 # Commodore Component: ocp-drain-monitor
 
+⚠️ This component has been deprecated in favour of <https://github.com/appuio/component-openshift-upgrade-controller>. ⚠️
+
 This is a [Commodore][commodore] Component for ocp-drain-monitor.
 
 This repository is part of Project Syn.
